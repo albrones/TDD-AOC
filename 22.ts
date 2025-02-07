@@ -1,6 +1,6 @@
 export class Deck {
   value: number[];
-  constructor(deckSize: number) {
+  constructor(deckSize: number = 10007) {
     this.value = this.initFactoryDeck(deckSize);
   }
   initFactoryDeck(deckSize: number) {

@@ -14,4 +14,8 @@ export class Deck {
 
     this.value.splice(0, 0, ...pack);
   }
+  cutBottom(packSize: number) {
+    const pack = this.value.splice(0, Math.abs(packSize));
+    this.value.splice(this.value.length, 0, ...pack);
+  }
 }

@@ -55,3 +55,13 @@ test('should cut 4 cards from the bottom with negative value, ex -4 should retur
   //Assert
   expect([...deck.value]).toEqual([...expectedDeck]);
 });
+
+test('should increment the deck order by indice, ex 3 should return Top 0 7 4 1 8 5 2 9 6 3 Bottom', () => {
+  //Arrange
+  let deck = new Deck(10);
+  let expectedDeck = [3, 6, 9, 2, 5, 8, 1, 4, 7, 0];
+  //Act
+  deck.increment(3);
+  //Assert
+  expect([...deck.value]).toEqual([...expectedDeck]);
+});

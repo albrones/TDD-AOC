@@ -41,7 +41,7 @@ test('should cut 3 cards of the top and move them as a single unit to the bottom
   let deck = new Deck(10);
   let expectedDeck = [2, 1, 0, 9, 8, 7, 6, 5, 4, 3];
   //Act
-  deck.cutTop(3);
+  deck.cut(3);
   //Assert
   expect([...deck.value]).toEqual([...expectedDeck]);
 });
@@ -51,7 +51,7 @@ test('should cut 4 cards from the bottom with negative value, ex -4 should retur
   let deck = new Deck(10);
   let expectedDeck = [5, 4, 3, 2, 1, 0, 9, 8, 7, 6];
   //Act
-  deck.cutBottom(-4);
+  deck.cut(-4);
   //Assert
   expect([...deck.value]).toEqual([...expectedDeck]);
 });

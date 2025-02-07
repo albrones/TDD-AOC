@@ -9,13 +9,11 @@ export class Deck {
   reverse() {
     return this.value.reverse();
   }
-  cutTop(packSize: number) {
-    const pack = this.value.splice(this.value.length - packSize, packSize);
 
-    this.value.splice(0, 0, ...pack);
-  }
-  cutBottom(packSize: number) {
-    const pack = this.value.splice(0, Math.abs(packSize));
-    this.value.splice(this.value.length, 0, ...pack);
+  cut(packSize: number) {
+    const cutPoint = packSize >= 0 ? this.value.length - packSize : 0;
+    const pastePoint = packSize >= 0 ? 0 : this.value.length;
+    const pack = this.value.splice(cutPoint, Math.abs(packSize));
+    this.value.splice(pastePoint, 0, ...pack);
   }
 }

@@ -9,4 +9,9 @@ export class Deck {
   reverse() {
     return this.value.reverse();
   }
+  cutTop(packSize: number) {
+    const pack = this.value.splice(this.value.length - packSize, packSize);
+
+    this.value.splice(0, 0, ...pack);
+  }
 }

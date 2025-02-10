@@ -65,3 +65,18 @@ test('should increment the deck order by indice, ex 3 should return Top 0 7 4 1 
   //Assert
   expect([...deck.value]).toEqual([...expectedDeck]);
 });
+
+test('shuffle process in input should chain operation to get the good result', () => {
+  //Arrange
+  let deck = new Deck(10);
+  let lines = [
+    'deal with increment 7',
+    'deal into new stack',
+    'deal into new stack',
+  ]; // I assume my file is already readed and splited
+  let expectedDeck = [7, 4, 1, 8, 5, 2, 9, 6, 3, 0];
+  //Act
+  deck.shuffle(lines);
+  //Assert
+  expect([...deck.value]).toEqual([...expectedDeck]);
+});

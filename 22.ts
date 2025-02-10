@@ -25,4 +25,15 @@ export class Deck {
     }
     this.value = newDeck.reverse();
   }
+  shuffle(lines: string[]) {
+    for (let line of lines) {
+      if (line.startsWith('deal with increment')) {
+        const increment = line.match(/(\d+)/)[0];
+        this.increment(Number(increment));
+      }
+      if (line.startsWith('deal into new stack')) {
+        this.value = this.reverse();
+      }
+    }
+  }
 }

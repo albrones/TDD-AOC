@@ -35,7 +35,7 @@ export class Deck {
         this.value = this.reverse();
       }
 if (line.startsWith('cut')) {
-        const cut = line.match(/(\d+)/)[0];
+        const cut = line.match(/[+-]?(\d+)/)[0];
         this.cut(Number(cut));
       }
     }

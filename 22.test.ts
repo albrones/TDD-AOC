@@ -66,6 +66,16 @@ test('should increment the deck order by indice, ex 3 should return Top 0 7 4 1 
   expect([...deck.value]).toEqual([...expectedDeck]);
 });
 
+test('should increment the deck order by indice, ex 9 should return Top 0 9 8 7 6 5 4 3 2 1 Bottom', () => {
+  //Arrange
+  let deck = new Deck(10);
+  let expectedDeck = [0, 9, 8, 7, 6, 5, 4, 3, 2, 1].reverse();
+  //Act
+  deck.increment(9);
+  //Assert
+  expect([...deck.value]).toEqual([...expectedDeck]);
+});
+
 test('shuffle process in input should chain operation to get the good result', () => {
   //Arrange
   let deck = new Deck(10);
@@ -86,6 +96,39 @@ test('shuffle process in input should chain operation to get the good result - 2
   let deck = new Deck(10);
   let lines = ['cut 6', 'deal with increment 7', 'deal into new stack']; // I assume my file is already readed and splited
   let expectedDeck = [6, 9, 2, 5, 8, 1, 4, 7, 0, 3];
+  //Act
+  deck.shuffle(lines);
+  //Assert
+  expect([...deck.value]).toEqual([...expectedDeck]);
+});
+
+test('shuffle process in input should chain operation to get the good result - 3 ', () => {
+  //Arrange
+  let deck = new Deck(10);
+  let lines = ['deal with increment 7', 'deal with increment 9', 'cut -2']; // I assume my file is already readed and splited
+  let expectedDeck = [6, 3, 0, 7, 4, 1, 8, 5, 2, 9].reverse();
+  //Act
+  deck.shuffle(lines);
+  //Assert
+  expect([...deck.value]).toEqual([...expectedDeck]);
+});
+
+test('shuffle process in input should chain operation to get the good result - 4 ', () => {
+  //Arrange
+  let deck = new Deck(10);
+  let lines = [
+    'deal into new stack',
+    'cut -2',
+    'deal with increment 7',
+    'cut 8',
+    'cut -4',
+    'deal with increment 7',
+    'cut 3',
+    'deal with increment 9',
+    'deal with increment 3',
+    'cut -1',
+  ]; // I assume my file is already readed and splited
+  let expectedDeck = [9, 2, 5, 8, 1, 4, 7, 0, 3, 6].reverse();
   //Act
   deck.shuffle(lines);
   //Assert

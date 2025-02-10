@@ -1,3 +1,5 @@
+import { readFileSync } from 'fs';
+
 export class Deck {
   value: number[];
   constructor(deckSize: number = 10007) {
@@ -25,6 +27,11 @@ export class Deck {
     }
     this.value = newDeck.reverse();
   }
+  readFile(fileUrl: string) {
+    const file = readFileSync(fileUrl, { encoding: 'utf8', flag: 'r' });
+    const lines = file.split('\n');
+    return lines;
+  }
   shuffle(lines: string[]) {
     for (let line of lines) {
       if (line.startsWith('deal with increment')) {
@@ -34,10 +41,16 @@ export class Deck {
       if (line.startsWith('deal into new stack')) {
         this.value = this.reverse();
       }
-if (line.startsWith('cut')) {
+      if (line.startsWith('cut')) {
         const cut = line.match(/[+-]?(\d+)/)[0];
         this.cut(Number(cut));
       }
     }
+  }
+
+  shuffleWithFile(fileName: string) {
+    console.log(this.value);
+    const lines = this.readFile(fileName);
+    this.shuffle(lines);
   }
 }

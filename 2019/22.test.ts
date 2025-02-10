@@ -134,3 +134,17 @@ test('shuffle process in input should chain operation to get the good result - 4
   //Assert
   expect([...deck.value]).toEqual([...expectedDeck]);
 });
+
+test('read file then shuffle 10007 cards deck with input and return result at position 2019', () => {
+  //Arrange
+  let deck = new Deck(10007);
+  let expectedDeck = 2322;
+
+  //Act
+  deck.shuffleWithFile('2019/input22.txt');
+  deck.value = deck.reverse();
+  //Assert
+  const result = deck.value.indexOf(2019);
+
+  expect(result).toEqual(expectedDeck);
+});

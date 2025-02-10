@@ -80,3 +80,14 @@ test('shuffle process in input should chain operation to get the good result', (
   //Assert
   expect([...deck.value]).toEqual([...expectedDeck]);
 });
+
+test('shuffle process in input should chain operation to get the good result - 2 ', () => {
+  //Arrange
+  let deck = new Deck(10);
+  let lines = ['cut 6', 'deal with increment 7', 'deal into new stack']; // I assume my file is already readed and splited
+  let expectedDeck = [6, 9, 2, 5, 8, 1, 4, 7, 0, 3];
+  //Act
+  deck.shuffle(lines);
+  //Assert
+  expect([...deck.value]).toEqual([...expectedDeck]);
+});

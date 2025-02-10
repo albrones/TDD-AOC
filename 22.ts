@@ -34,6 +34,10 @@ export class Deck {
       if (line.startsWith('deal into new stack')) {
         this.value = this.reverse();
       }
+if (line.startsWith('cut')) {
+        const cut = line.match(/(\d+)/)[0];
+        this.cut(Number(cut));
+      }
     }
   }
 }
